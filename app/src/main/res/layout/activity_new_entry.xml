@@ -20,14 +20,14 @@
             android:textColor="@color/primary"
             android:textSize="50sp" />
 
-        <GridView
+        <ListView
             android:id="@+id/tag_grid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:gravity="center_horizontal"
-            android:numColumns="1"
-            />
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

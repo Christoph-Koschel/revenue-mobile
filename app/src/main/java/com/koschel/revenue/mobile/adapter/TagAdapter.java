@@ -29,16 +29,18 @@ public class TagAdapter extends ArrayAdapter<TagModel> {
         }
 
 
-        TagModel model = getItem(position);
+        final TagModel model = getItem(position);
         assert model != null;
 
-        if (!view.hasOnClickListeners()) {
-            view.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), SendActivity.class);
-                intent.putExtra("tag", model);
-                getContext().startActivity(intent);
-            });
-        }
+//        if (!view.hasOnClickListeners()) {
+//            view.setOnClickListener(new View.OnClickListener() {
+//                private final TagModel _model = model;
+//                @Override
+//                public void onClick(View v) {
+//
+//                }
+//            });
+//        }
 
         TextView title = view.findViewById(R.id.title);
         TextView type = view.findViewById(R.id.type);

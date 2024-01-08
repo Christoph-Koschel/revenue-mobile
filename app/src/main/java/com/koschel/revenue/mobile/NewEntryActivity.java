@@ -2,9 +2,14 @@ package com.koschel.revenue.mobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ListView;
 
 import com.koschel.revenue.mobile.adapter.TagAdapter;
 import com.koschel.revenue.mobile.model.TagModel;
@@ -31,11 +36,15 @@ public class NewEntryActivity extends AppCompatActivity {
                 tagModels[i] = new TagModel(tag.getInt("id"), tag.getString("name"), tag.getBoolean("income"));
             }
 
-            GridView gridView = findViewById(R.id.tag_grid);
+            ListView listView = findViewById(R.id.tag_grid);
 
             TagAdapter adapter = new TagAdapter(this, tagModels);
-
-            gridView.setAdapter(adapter);
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener((parent, view, position, id) -> {
+                Intent intent = new Intent(this, SendActivity.class);
+                intent.putExtra("tag", tagModels[position]);
+                startActivity(intent);
+            });
         } catch (Exception e) {
 
         }
